@@ -1,18 +1,9 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfSMSApp.View
 {
@@ -33,6 +24,7 @@ namespace WpfSMSApp.View
                 MessageDialogStyle.AffirmativeAndNegative, null);
 
             if (result == MessageDialogResult.Affirmative)
+                Commons.LOGGER.Info("프로그램종료");
                 Application.Current.Shutdown(); //프로그램 종료
         }
 
