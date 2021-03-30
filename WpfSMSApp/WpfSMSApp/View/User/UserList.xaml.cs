@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfSMSApp.View.Account
+namespace WpfSMSApp.View.User
 {
     /// <summary>
     /// MyAccount.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MyAccount : Page
+    public partial class UserList : Page
     {
-        public MyAccount()
+        public UserList()
         {
             InitializeComponent();
         }
@@ -30,13 +30,13 @@ namespace WpfSMSApp.View.Account
             try
             {
                 var user = Commons.LOGINED_USER; 
-                TxtUserID.Text = Commons.LOGINED_USER.UserID.ToString();
+                /*TxtUserID.Text = Commons.LOGINED_USER.UserID.ToString();
                 TxtUserIdentityNumber.Text = user.UserIdentityNumber.ToString();
                 TxtUserSurName.Text = user.UserSurname.ToString();
                 TxtUserName.Text = user.UserName.ToString();
                 TxtUserEmail.Text = user.UserEmail.ToString();
                 TxtUserAdmin.Text = user.UserAdmin.ToString();
-                TxtUserActivated.Text = user.UserActivated.ToString(); 
+                TxtUserActivated.Text = user.UserActivated.ToString(); */
             }
             catch (Exception ex)
             {
@@ -47,7 +47,27 @@ namespace WpfSMSApp.View.Account
 
         private void BtnEditMyAccount_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EditAccount()); //계정정보 수정 화면(EditAccount)으로 전환 
+            // NavigationService.Navigate(new EditAccount()); //계정정보 수정 화면(EditAccount)으로 전환 
+        }
+
+        private void BtnAddUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDeactivateUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnExportPdf_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -109,7 +109,7 @@
                     Grid.Column="5" 
                     Content="사용자" FontSize="16" 
                     Foreground="White" Background="LightSteelBlue" 
-                    Margin="5,10,5,10" >
+                    Margin="5,10,5,10" Click="BtnUser_Click" >
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -151,8 +151,8 @@
             </Button>
 
         </Grid>
-        <Grid Background="WhiteSmoke">
-            <Frame x:Name="ActiveControl"/>  <!--화면전환-->
+        <Grid Background="White">
+            <Frame x:Name="ActiveControl" NavigationUIVisibility="Hidden"/>  <!--화면전환-->
         </Grid>
     </DockPanel>
 </mah:MetroWindow>
