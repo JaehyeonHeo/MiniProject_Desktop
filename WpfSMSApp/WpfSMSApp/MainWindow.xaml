@@ -122,7 +122,7 @@
 
             <Button x:Name="BtnAccount" 
                     Grid.Column="6" 
-                    Content="계정" FontSize="16" 
+                    Content="내계정" FontSize="16" 
                     Foreground="White" Background="CornflowerBlue" 
                     Margin="5,10,5,10" Click="BtnAccount_Click" >
                 <Button.ContentTemplate>
