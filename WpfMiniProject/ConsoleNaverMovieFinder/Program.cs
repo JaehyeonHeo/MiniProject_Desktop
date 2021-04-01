@@ -1,0 +1,64 @@
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleNaverMovieFinder
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string clientID = "0K7o7QejqQzZ1JesKvnE";
+            string clientSecret = "t8mf7gwzCP";
+            string search = "starwars";  // 영화제목 변경가능 
+            string openApiUrl = $"https://openapi.naver.com/v1/search/movie?query={search}";
+
+            string responseJson = GetOpenApiResult(openApiUrl, clientID, clientSecret);
+            JObject parseJson = JObject.Parse(responseJson);
+
+            int total = Convert.ToInt32( parseJson["total"]);
+            Console.WriteLine($"총 검색결과 : {total}");
+            int display = Convert.ToInt32(parseJson["display"]);
+            Console.WriteLine($"화면 출력 : {display}");
+
+            JToken items = parseJson["items"];
+            JArray json_array = (JArray)items;
+
+            foreach (var item in json_array)
+            {
+                Console.WriteLine($"{item["title"]} / {item["image"]} / {item["subtitle"]} / {item["actor"]}"); 
+            }
+        }
+
+        private static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
+        {
+            var result = "";
+
+            try
+            {
+                WebRequest request = WebRequest.Create(openApiUrl);
+                request.Headers.Add("X-Naver-Client-Id", clientID);
+                request.Headers.Add("X-Naver-Client-Secret", clientSecret);
+
+                WebResponse response = request.GetResponse();
+                Stream stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+
+                result = reader.ReadToEnd();
+                reader.Close();
+                stream.Close();
+                response.Close(); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"예외발생 : {ex}"); 
+            }
+            return result; 
+        }
+    }
+}
