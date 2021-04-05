@@ -6,7 +6,7 @@
 * [MovieFInderApp Code](https://github.com/JaehyeonHeo/MiniProject_Desktop/tree/main/WpfMiniProject/NaverMovieFinderApp "소스코드")  
 
 
-## 📦 미니프로젝트 데스크탑앱(ERP 재고관리) 
+## 📦 StockManagementSystem App (ERP 재고관리) 
 
 
 
