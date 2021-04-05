@@ -1,7 +1,5 @@
 # ✅ MiniProject_Desktop ✅ 
-```
-MovieFinder App (영화찾기 앱)
-```
+
 ## 🎬 MovieFinder App 
 ![MovieFinderApp](WpfMiniProject/MovieFinder.png "MovieFinder")  
 ![MovieFinderApp](WpfMiniProject/MovieFinder2.png "MovieFinder")
