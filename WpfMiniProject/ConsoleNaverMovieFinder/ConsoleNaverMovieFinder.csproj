@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1F485E1-AB26-49B3-95F1-294EEA32F858}</ProjectGuid>
+    <ProjectGuid>{F9A26EB5-8066-452E-BB13-1ED3D7726762}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ConsoleNaverMovieFinder</RootNamespace>
     <AssemblyName>ConsoleNaverMovieFinder</AssemblyName>

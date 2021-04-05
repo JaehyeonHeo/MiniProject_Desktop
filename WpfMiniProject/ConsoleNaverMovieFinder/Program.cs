@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleNaverMovieFinder
 {
@@ -13,31 +9,31 @@ namespace ConsoleNaverMovieFinder
     {
         static void Main(string[] args)
         {
-            string clientID = "0K7o7QejqQzZ1JesKvnE";
-            string clientSecret = "t8mf7gwzCP";
-            string search = "starwars";  // 영화제목 변경가능 
+            string clientID = "ides3K7kXxmna11Vi4wX";
+            string clientSecret = "JAd4Qrrcqp";
+            string search = "starwars"; // 변경 가능
             string openApiUrl = $"https://openapi.naver.com/v1/search/movie?query={search}";
 
             string responseJson = GetOpenApiResult(openApiUrl, clientID, clientSecret);
-            JObject parseJson = JObject.Parse(responseJson);
+            JObject parsedJson = JObject.Parse(responseJson);
 
-            int total = Convert.ToInt32( parseJson["total"]);
+            int total = Convert.ToInt32(parsedJson["total"]);
             Console.WriteLine($"총 검색결과 : {total}");
-            int display = Convert.ToInt32(parseJson["display"]);
-            Console.WriteLine($"화면 출력 : {display}");
+            int display = Convert.ToInt32(parsedJson["display"]);
+            Console.WriteLine($"화면출력 : {display}");
 
-            JToken items = parseJson["items"];
+            JToken items = parsedJson["items"];
             JArray json_array = (JArray)items;
 
             foreach (var item in json_array)
             {
-                Console.WriteLine($"{item["title"]} / {item["image"]} / {item["subtitle"]} / {item["actor"]}"); 
+                Console.WriteLine($"{item["title"]} / {item["image"]} / {item["subtitle"]} / {item["actor"]} ");
             }
         }
 
         private static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
         {
-            var result = "";
+            string result = "";
 
             try
             {
@@ -50,15 +46,17 @@ namespace ConsoleNaverMovieFinder
                 StreamReader reader = new StreamReader(stream);
 
                 result = reader.ReadToEnd();
+
                 reader.Close();
                 stream.Close();
-                response.Close(); 
+                response.Close();                
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"예외발생 : {ex}"); 
+                Console.WriteLine($"예외발생 : {ex}");
             }
-            return result; 
+
+            return result;
         }
     }
 }
