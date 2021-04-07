@@ -9,27 +9,51 @@ namespace WpfSMSApp.View.Store
     /// <summary>
     /// MyAccount.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class AddStore : Page
+    public partial class EditStore : Page
     {
-        public AddStore()
+        private int StoreId { get; set;  }
+        private Model.Store CurrentStore { get; set; }
+
+        public EditStore()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 추가생성자 => StoreList에서 storeId를 받아옴 !!!
+        /// </summary>
+        /// <param name="storeId"></param>
+        public EditStore(int storeId) : this() 
+        {
+            StoreId = storeId; 
+        }
+
         private  void Page_Loaded(object sender, RoutedEventArgs e)
         {
-                //라벨 에러메세지 숨겨놓기 !
-                LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
-                TxtStoreID.Text = TxtStoreName.Text = TxtStoreLocation.Text = ""; 
+            //라벨 에러메세지 숨겨놓기 !
+            LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
+            TxtStoreID.Text = TxtStoreName.Text = TxtStoreLocation.Text = "";
+
+            try
+            {
+                //store 테이블에서 내용 읽음 
+                CurrentStore = Logic.DataAccess.GetStores().Where(s => s.StoreID.Equals(StoreId)).FirstOrDefault();
+                TxtStoreID.Text = CurrentStore.StoreID.ToString();
+                TxtStoreName.Text = CurrentStore.StoreName;
+                TxtStoreLocation.Text = CurrentStore.StoreLocation; 
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"EditStore.xaml.cs Page Loaded 예외발생 : {ex}");
+                Commons.ShowMessageAsync("예외", $"예외발생 : {ex}"); 
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack(); 
         }
-
-       
-
+        
         /// <summary>
         /// 정상 입력값 확인 메서드 
         /// </summary>
@@ -54,36 +78,36 @@ namespace WpfSMSApp.View.Store
                     isValid = false; 
                 }
             }
+
             if (string.IsNullOrEmpty(TxtStoreLocation.Text))
             {
-                LblStoreLocation.Visibility = Visibility.Hidden;
+                LblStoreLocation.Visibility = Visibility.Visible;
                 LblStoreLocation.Text = "창고위치를 입력하세요";
-                isValid = false; 
+                isValid = false;
             }
+
             return isValid; 
         }
-
-        public bool IsValid = true;
+        
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+            bool isValid = true;
             LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
 
-            var store = new Model.Store();
-            IsValid = IsValidInput(); // 유효성 체크 = 개발자에게 필수 !!!!
+            isValid = IsValidInput(); // 유효성 체크 = 개발자에게 필수 !!!!
 
-            if (IsValid)
+            if (isValid)
             {
-                store.StoreName = TxtStoreName.Text;
-                store.StoreLocation = TxtStoreLocation.Text;
+                CurrentStore.StoreName = TxtStoreName.Text;
+                CurrentStore.StoreLocation = TxtStoreLocation.Text;
 
                 try
                 {
-                    var result = Logic.DataAccess.SetStore(store);
+                    var result = Logic.DataAccess.SetStore(CurrentStore);
                     if (result == 0)
                     {
-                        Commons.LOGGER.Error($"AddStroe.xaml.cs 창고정보 저장하면서 오류발생");
-                        Commons.ShowMessageAsync("오류", "저장시 오류가 발생"); 
+                        Commons.LOGGER.Error($"AddStroe.xaml.cs 창고정보 수정 오류발생");
+                        Commons.ShowMessageAsync("오류", "수정 오류가 발생"); 
                     }
                     else
                     {
