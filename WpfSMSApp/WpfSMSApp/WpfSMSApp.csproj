@@ -393,6 +393,7 @@
       <DependentUpon>SMSModel.edmx</DependentUpon>
       <LastGenOutput>SMSModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SMSscript.sql" />
     <Resource Include="Resources\stock.png" />
     <Resource Include="Resources\address_book2.png" />
     <Resource Include="Resources\address_book.png" />
