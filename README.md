@@ -10,8 +10,13 @@
 
 ## 📦 StockManagementSystem App (ERP 재고관리) 
 
+#### <실행화면>
+![StockManagemet SYSTEM](WpfSMSApp/images/SMS.png "SMS App")
+
+![StockManagemet SYSTEM](WpfSMSApp/images/SMS2.png "SMS App")
 
 
+* [StockManagemet SYSTEM Code](https://github.com/JaehyeonHeo/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp "소스코드") 
 
 _____________________________________________
 ## [🔙뒤로]( https://github.com/JaehyeonHeo)
