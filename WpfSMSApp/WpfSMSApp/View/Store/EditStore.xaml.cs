@@ -28,7 +28,7 @@ namespace WpfSMSApp.View.Store
             StoreId = storeId; 
         }
 
-        private  void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             //라벨 에러메세지 숨겨놓기 !
             LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
@@ -53,6 +53,7 @@ namespace WpfSMSApp.View.Store
         {
             NavigationService.GoBack(); 
         }
+
         
         /// <summary>
         /// 정상 입력값 확인 메서드 
@@ -68,16 +69,6 @@ namespace WpfSMSApp.View.Store
                 LblStoreName.Text = "창고명을 입력하세요";
                 isValid = false;
             }
-            else
-            {
-                var cnt = Logic.DataAccess.GetStores().Where(u => u.StoreName.Equals(TxtStoreName.Text)).Count();
-                if (cnt > 0)
-                {
-                    LblStoreName.Visibility = Visibility.Visible;
-                    LblStoreName.Text = "이미 창고이름이 존재합니다";
-                    isValid = false; 
-                }
-            }
 
             if (string.IsNullOrEmpty(TxtStoreLocation.Text))
             {
@@ -85,7 +76,6 @@ namespace WpfSMSApp.View.Store
                 LblStoreLocation.Text = "창고위치를 입력하세요";
                 isValid = false;
             }
-
             return isValid; 
         }
         

@@ -28,7 +28,7 @@ namespace WpfSMSApp.View.Store
             NavigationService.GoBack(); 
         }
 
-       
+        
 
         /// <summary>
         /// 정상 입력값 확인 메서드 
@@ -37,7 +37,6 @@ namespace WpfSMSApp.View.Store
         public bool IsValidInput()
         {
             bool isValid = true;
-
             if (string.IsNullOrEmpty(TxtStoreName.Text))
             {
                 LblStoreName.Visibility = Visibility.Visible;
@@ -54,25 +53,28 @@ namespace WpfSMSApp.View.Store
                     isValid = false; 
                 }
             }
+
             if (string.IsNullOrEmpty(TxtStoreLocation.Text))
             {
-                LblStoreLocation.Visibility = Visibility.Hidden;
+                LblStoreLocation.Visibility = Visibility.Visible;
                 LblStoreLocation.Text = "창고위치를 입력하세요";
                 isValid = false; 
             }
-            return isValid; 
+            
+            return isValid;
+            
         }
 
-        public bool IsValid = true;
+        
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+            bool isValid = true;
             LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
 
             var store = new Model.Store();
-            IsValid = IsValidInput(); // 유효성 체크 = 개발자에게 필수 !!!!
+            isValid = IsValidInput(); // 유효성 체크 !!!!
 
-            if (IsValid)
+            if (isValid)
             {
                 store.StoreName = TxtStoreName.Text;
                 store.StoreLocation = TxtStoreLocation.Text;
@@ -83,7 +85,8 @@ namespace WpfSMSApp.View.Store
                     if (result == 0)
                     {
                         Commons.LOGGER.Error($"AddStroe.xaml.cs 창고정보 저장하면서 오류발생");
-                        Commons.ShowMessageAsync("오류", "저장시 오류가 발생"); 
+                        Commons.ShowMessageAsync("오류", "저장시 오류가 발생");
+                        return;
                     }
                     else
                     {
