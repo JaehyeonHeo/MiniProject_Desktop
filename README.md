@@ -7,7 +7,7 @@
 ![MovieFinderApp](WpfMiniProject/MovieFinder2.png "MovieFinder")
 * [MovieFInderApp Code](https://github.com/JaehyeonHeo/MiniProject_Desktop/tree/main/WpfMiniProject/NaverMovieFinderApp "소스코드")  
 
-
+_________________________________________________________
 ## 📦 StockManagementSystem App (ERP 재고관리) 
 
 #### <실행화면>
