@@ -34,7 +34,7 @@
             <ColumnDefinition Width="210"/>
         </Grid.ColumnDefinitions>
         <!--제목입력 시작-->
-        <Label Content="창고정보 입력" Grid.Row="0" Grid.Column="1" FontSize="26" FontWeight="ExtraBold"
+        <Label Content="메뉴 입력" Grid.Row="0" Grid.Column="1" FontSize="26" FontWeight="ExtraBold"
                VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" />
         <!--제목입력 끝-->
 
@@ -62,8 +62,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Content="순번" />
-            <Label Grid.Row="1" Content="창고명" />
-            <Label Grid.Row="2" Content="창고위치" />
+            <Label Grid.Row="1" Content="메뉴" />
+            <Label Grid.Row="2" Content="가격" />
             
             <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TxtStoreID" Text="StoreID"/>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
